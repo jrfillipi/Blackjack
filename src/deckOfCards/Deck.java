@@ -1,6 +1,7 @@
 package deckOfCards;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Deck is where we bring the 52 cards together. Here we have the methods to
@@ -30,6 +31,7 @@ public class Deck
 		this.cardPosition = 0;
 		this.randNum = new Random();
 		this.fillTheDeck();
+		// Collections.shuffle(this.theDeck);
 	}
 
 	/**

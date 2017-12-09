@@ -1,5 +1,7 @@
 package blackjack;
 
+import java.util.Collections;
+
 import deckOfCards.Deck;
 import helpers.InputHelper;
 import player.Dealer;
@@ -70,7 +72,8 @@ public class Blackjack
 	public void playGame()
 	{
 
-		this.deckOfCards.shuffle();
+		// this.deckOfCards.shuffle();
+		Collections.shuffle(this.deckOfCards.getDeck());
 
 		boolean gameOn = true;
 		while (gameOn)
@@ -537,7 +540,8 @@ public class Blackjack
 	{
 		if (this.deckOfCards.getCardPosition() > 35)
 		{
-			this.deckOfCards.shuffle();
+			// this.deckOfCards.shuffle();
+			Collections.shuffle(this.deckOfCards.getDeck());
 		}
 	}
 
