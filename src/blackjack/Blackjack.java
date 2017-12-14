@@ -29,7 +29,7 @@ public class Blackjack
 	{
 		this.playerHand = new Gambler();
 		this.dealerHand = new Dealer();
-		this.deckOfCards = new Deck();
+		this.deckOfCards = new Deck(2);
 		this.input = new InputHelper();
 	}
 
@@ -43,12 +43,15 @@ public class Blackjack
 	private void openingDeal()
 	{
 
-		for (int x = 0; x < 2; x++)
-		{
-
-			this.playerHand.hit(this.deckOfCards.getNextCard());
-			this.dealerHand.hit(this.deckOfCards.getNextCard());
-		}
+		this.playerHand.hit(this.deckOfCards.getNextCard());
+		this.dealerHand.hit(this.deckOfCards.getNextCard());
+		this.playerHand.hit(this.deckOfCards.getNextCard());
+//		for (int x = 0; x < 2; x++)
+//		{
+//
+//			this.playerHand.hit(this.deckOfCards.getNextCard());
+//			this.dealerHand.hit(this.deckOfCards.getNextCard());
+//		}
 
 		this.showOpeningDeal();
 	}
@@ -72,8 +75,7 @@ public class Blackjack
 	public void playGame()
 	{
 
-		// this.deckOfCards.shuffle();
-		Collections.shuffle(this.deckOfCards.getDeck());
+		this.deckOfCards.shuffle();
 
 		boolean gameOn = true;
 		while (gameOn)
@@ -538,10 +540,11 @@ public class Blackjack
 	/** Checks whether it is time to shuffle the cards or not */
 	private void checkIfTimeToShuffle()
 	{
-		if (this.deckOfCards.getCardPosition() > 35)
+		//if (this.deckOfCards.getCardPosition() > 35)
+		if (this.deckOfCards.getCardPosition() > (this.deckOfCards.getDeck().size())-17)
 		{
-			// this.deckOfCards.shuffle();
-			Collections.shuffle(this.deckOfCards.getDeck());
+			this.deckOfCards.shuffle();
+
 		}
 	}
 
@@ -568,7 +571,7 @@ public class Blackjack
 	{
 		this.playerHand = new Gambler();
 		this.dealerHand = new Dealer();
-		this.deckOfCards = new Deck();
+		this.deckOfCards = new Deck(2);
 	}
 
 	/*
