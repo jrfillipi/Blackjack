@@ -22,9 +22,18 @@ public class Dealer extends Player
 	 * @return if the Dealer's hand is less than 17 or a soft 17, the dealer
 	 *         must hit so return true; false otherwise
 	 */
+
+	// public boolean dealerHits()
+	// {
+	// return super.getHandTotal() < 17 || (super.getHandTotal() == 17 &&
+	// super.getHand().hasSoft17());
+	// }
+
+	// Re-factored code. Dealer is not allowed to hit on Soft 17. --Sam K
+
 	public boolean dealerHits()
 	{
-		return super.getHandTotal() < 17 || (super.getHandTotal() == 17 && super.getHand().hasSoft17());
+		return !super.getHand().hasSoft17() || super.getHandTotal() <= 17;
 	}
 
 	/**

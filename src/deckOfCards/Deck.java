@@ -1,6 +1,7 @@
 package deckOfCards;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Deck is where we bring the 52 cards together. Here we have the methods to

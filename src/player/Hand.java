@@ -1,6 +1,6 @@
 package player;
 
-import java.util.*;
+import java.util.ArrayList;
 
 import deckOfCards.Aces;
 import deckOfCards.Card;
@@ -34,7 +34,18 @@ public class Hand
 	 */
 	public boolean canDoubleDown()
 	{
-		return this.hand.size() == 2 && (this.total == 11 || this.total == 10);
+		return this.hand.size() == 2 && (this.total == 11 || this.total == 10 || this.total == 9);
+	}
+
+	// Added to code: Split method, allows for a split if player has matching
+	// pairs of 10's or matching Face cards
+
+	public boolean possibleSplit()
+	{
+
+		return this.hand.get(0) == this.hand.get(1)
+				&& (this.hand.get(0).getCardFace() == "J" || this.hand.get(0).getCardFace() == "Q"
+						|| this.hand.get(0).getCardFace() == "K" || this.hand.get(0).getCardFace() == "10");
 	}
 
 	/**

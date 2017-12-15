@@ -1,7 +1,9 @@
 package test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
+
 import deckOfCards.Aces;
 import deckOfCards.Card;
 import deckOfCards.Deck;
@@ -27,6 +29,8 @@ public class ProjectTests
 	Card tenOfHearts = new NumberCard("Hearts", 10);
 	Card fiveOfDiamonds = new NumberCard("Diamonds", 5);
 	Card sixOfClubs = new NumberCard("Clubs", 6);
+	Card fourofDiamonds = new NumberCard("Diamonds", 4);
+	Card tenOfSpades = new NumberCard("Spades", 10);
 
 	@Test
 	public void testIfBlackjack()
@@ -103,10 +107,11 @@ public class ProjectTests
 
 		Gambler player = new Gambler();
 
-		player.hit(fiveOfDiamonds);
+		player.hit(fourofDiamonds);
 		player.hit(sixOfClubs);
 
 		assertEquals(true, player.getHand().canDoubleDown());
+
 	}
 
 	@Test
