@@ -27,6 +27,7 @@ public class ProjectTests
 	Card tenOfHearts = new NumberCard("Hearts", 10);
 	Card fiveOfDiamonds = new NumberCard("Diamonds", 5);
 	Card sixOfClubs = new NumberCard("Clubs", 6);
+	Card fourOfClubs = new NumberCard("Clubs", 4);
 
 	@Test
 	public void testIfBlackjack()
@@ -96,9 +97,18 @@ public class ProjectTests
 
 		assertEquals(52, theDeck.getDeck().size());
 	}
+	
+	@Test
+	public void testIfDeckIsComprisedOfMultipleOf52Cards()
+	{
+
+		Deck theDeck = new Deck(2);
+
+		assertEquals(104, theDeck.getDeck().size());
+	}
 
 	@Test
-	public void testIfPlayerCanDoubleDown()
+	public void testIfPlayerCanDoubleDown11()
 	{
 
 		Gambler player = new Gambler();
@@ -110,15 +120,42 @@ public class ProjectTests
 	}
 
 	@Test
-	public void testIfDealerHitsOnSoft17()
+	public void testIfPlayerCanDoubleDown10()
 	{
 
+		Gambler player = new Gambler();
+
+		player.hit(fiveOfDiamonds);
+		player.hit(fiveOfDiamonds);
+
+		assertEquals(true, player.getHand().canDoubleDown());
+	}
+
+	@Test
+	public void testIfPlayerCanDoubleDown9()
+	{
+
+		Gambler player = new Gambler();
+
+		player.hit(fiveOfDiamonds);
+		player.hit(fourOfClubs);
+
+		assertEquals(true, player.getHand().canDoubleDown());
+	}
+
+	
+	
+	@Test
+	public void testIfDealerHitsOnSoft17()
+	{
+		// changed the assert to false to denote dealer standing on all hands >=
+		// 17.
 		Dealer dealer = new Dealer();
 
 		dealer.hit(aceOfSpades);
 		dealer.hit(sixOfClubs);
 
-		assertEquals(true, dealer.dealerHits());
+		assertEquals(false, dealer.dealerHits());
 	}
 
 	@Test
